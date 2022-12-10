@@ -1,0 +1,74 @@
+.login-container{
+    background-color:#82C0CC;
+
+    .nav-bar-outer{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        border-bottom: solid 1px black;
+
+        .nav-bar-inner{
+            height: 7.5rem;
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            font-size: 2rem;
+
+            .nav-bar-logo{
+                font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                transition: all .2s;
+                
+                &:hover{
+                    translate: 0 -10px;
+                }
+            }
+        }
+
+        .nav-bar-list{
+            display: flex;
+            font-size: 1.5rem;
+
+            &-selections{
+                padding: 0 .75rem;
+                &:last-child{
+                    background-color: #EDE7E3;
+                }
+            }
+        }
+    }
+
+    .content-main{
+        height: 50vh;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+
+        .content-main-header{
+            align-self: center;
+            margin-bottom: 7rem;
+
+            .main-header{
+                font-size: 9rem;
+                margin-left: -1.5rem;
+            }
+            .header-description{
+                font-size: 2rem;
+                margin-top: -2.5rem;
+            }
+        }
+        .content-main-figure{
+            img{
+                width: 100%;
+            }
+            margin-left: 10rem;
+            align-self: center;
+            opacity: 20%;
+            transition: all .5s;
+            &:hover{
+                opacity: 90%;
+            }
+        }
+    }
+}
+    
