@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&family=Source+Code+Pro:wght@300&display=swap');
+
 body {
   margin: 0;
   padding: 0;
-  font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: 'Montserrat', 'Open Sans', gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;

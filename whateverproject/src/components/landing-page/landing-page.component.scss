@@ -1,0 +1,66 @@
+.landingpage-container{
+    background-color: #bde0ee;
+    height: 100vh;
+    width: 100vw;
+    color: #20589e;
+    position: relative;
+    //#20589e
+
+    .nav-bar{
+        height: 10%;
+        .nav-bar-list{
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            button{
+                color: #20589e;
+            }
+        }
+    }
+
+    .main-content{
+        height: 60%;
+        font-size: 80px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center; 
+        
+        &-logo{
+            padding: 40px;
+
+            @keyframes logoBounce{
+                0%{
+                    transform: rotate(-.09turn) translateY(-50%); //left and up
+                }
+
+                30%{
+                    transform: rotate(.09turn) translateY(-30%);
+
+                }
+
+                60%{
+                    transform: rotate(-0.04turn) translateY(-10%);
+                }
+
+                80%{
+                    transform: rotate(.04turn) translateY(0%);
+                }
+
+                100%{
+                    transform: translate(0);
+                }
+            }
+            animation: 1.5s ease-in 0s 1 logoBounce;
+        }
+
+        &-logo:hover{
+            transition: all .2s;
+            transform: translateY(-20px);
+        }
+
+
+
+    }
+}
