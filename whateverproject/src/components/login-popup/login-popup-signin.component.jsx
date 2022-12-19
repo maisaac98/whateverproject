@@ -26,7 +26,7 @@ const LoginPopupSignIn = () => {
     // }
 
     return(
-        <div className="login-sign-up-section">
+        <div className="login-section">
             <h2 className="sign-up-header">
                 Welcome back. <br/> <br/>
             </h2>

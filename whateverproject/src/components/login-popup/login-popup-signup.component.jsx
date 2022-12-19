@@ -11,7 +11,7 @@ const LoginPopupSignup = () => {
     const toggleSignUpForm = () => setIsSignUpOpen(!isSignUpOpen);
 
     return(
-        <div className="login-sign-up-section">
+        <div className="login-section">
             <h2 className="sign-up-header">
                 Join Whatever. <br/> <br/>
             </h2>

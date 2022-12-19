@@ -1,0 +1,101 @@
+.container-a{
+    background-color: rgb(255, 255, 255);
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    display: block;
+
+    &-1{
+        max-width: 1300px;
+        height: fill;
+        margin:auto;
+        display: block;
+    }
+}
+
+.current-user-name{
+    font-weight: 700;
+    margin-top: 70px;
+}
+
+.container-b{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+
+    .nav-side{
+        min-width: 80px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-right: 1px solid rgb(230, 230, 230);
+        padding-right: 10px;
+
+        .whatever-icon{
+            position: absolute;
+            top: 1%;
+            height: 50px;
+            width: 50px;
+            
+        }
+
+        .nav-side-container{
+            position: fixed;
+            transform: translateY(-100%);
+        }
+        .nav-side-items{
+            margin-bottom: 40px;
+            list-style: none;
+        }
+    }
+
+    .content-side{
+        min-width: 860px;
+
+        &-1{
+            width: 70%;
+            margin: auto;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+
+            .content-header{
+                margin: 40 0px;
+                font-size: 3rem;
+                width: 100%;
+                .content-nav-bar{
+                    border-bottom: 1px solid rgb(240, 240, 240);
+                    font-size: 1.5rem;
+                }
+            }
+
+            .content-main{
+                font-size: 1.5rem;
+                line-height: 30px;
+                display: block;
+                &-boxes{
+                    margin: 40px 0;
+                    border-bottom: 1px solid rgb(240,240,240);
+                    padding-bottom: 20px;
+                    .content-body{
+                        -webkit-line-clamp: 3;
+                        max-height: 60px;
+                        text-overflow: ellipsis;
+                        white-space: wrap;
+                        overflow: hidden;
+                    }
+                }                
+            }
+        }
+    }
+
+    .profile-side{
+        min-width: 360px;
+        border-left: solid 1px rgb(240, 240, 240);
+
+        .profile-content{
+            width: 80%;
+            margin: auto;
+        }
+    }
+}
