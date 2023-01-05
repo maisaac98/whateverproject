@@ -1,6 +1,5 @@
 import { useContext, useState } from 'react';
 import { LoginContext } from '../../contexts/login.context';
-import { UserContext } from '../../contexts/user.context';
 import ButtonTwo from '../button-two/button-two-component';
 import {ReactComponent as GoogleIcon} from '../../assets/google-icon.svg';
 import {ReactComponent as EmailIcon} from '../../assets/email-icon.svg';
@@ -9,13 +8,18 @@ import { signInWithGooglePopup } from '../../utils/firebase.utils';
 
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import ButtonClose from '../button-close/button-close.component';
+import { useDispatch } from 'react-redux';
+import { createAction } from '../../utils/reducer/reducers.utils';
+import { LOGINPOPUP_ACTION_TYPES } from '../../store/loginpopup/loginpopup.types';
+import EmailSignIn from '../email-login/email-login-signin.component';
 
 const LoginPopupSignIn = () => {
-    const { isPopupOpen, setIsPopupOpen, isSignUpOpen, setIsSignUpOpen } = useContext(LoginContext);
-    const togglePopup = () => setIsPopupOpen(!isPopupOpen);
-    const toggleSignUpForm = () => setIsSignUpOpen(!isSignUpOpen);
+    const dispatch = useDispatch();
+    const toggleSignUpForm = () => dispatch(createAction(LOGINPOPUP_ACTION_TYPES.SET_SIGNUP_OPEN))
     const navigate = useNavigate();
-    const {currentUser, setCurrentUser} = useContext(UserContext);
+    const toEmailSignIn = () => dispatch(createAction(LOGINPOPUP_ACTION_TYPES.SET_EMAIL_SIGNIN_OPEN));
+
 
     const logGoogleUser = async() => {
         await signInWithGooglePopup();
@@ -24,6 +28,7 @@ const LoginPopupSignIn = () => {
     // const loginNavigate = () => {
     //     return currentUser ? navigate("/home"):console.log('error navigating to homepage');
     // }
+    
 
     return(
         <div className="login-section">
@@ -33,8 +38,7 @@ const LoginPopupSignIn = () => {
             <div className="sign-up-button-list">
                 <ButtonTwo name='Google' svg={GoogleIcon} signup ='in' type='button' func={logGoogleUser}/>
                 <ButtonTwo name='Facebook' svg={FacebookIcon} signup ='in'/>
-                <ButtonTwo name='Email' svg={EmailIcon} signup ='in'/>
-                {/* <button type='button' onClick={() => console.log(currentUser)}>currentUser</button> */}
+                <ButtonTwo name='Email' svg={EmailIcon} signup ='in'  func={toEmailSignIn}/>
             </div>
             <span className="forgot-password">
                 <br/>Forgot password?
@@ -46,7 +50,7 @@ const LoginPopupSignIn = () => {
             <div className="login-popup-footer">
                 &#169; Isaac Ma 2022
             </div>
-            <button className='popup-close' onClick={togglePopup}>&#10005;</button>
+            <ButtonClose/>
         </div>
     )
 }

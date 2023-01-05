@@ -1,14 +1,14 @@
 import { useContext } from "react";
-import { UserContext } from "../../contexts/user.context";
 import { signOutUser } from "../../utils/firebase.utils";
 import { Navigate, useNavigate } from "react-router-dom";
 import ContentBox from "../content-boxes/content-boxes-component";
 import { useEffect } from "react";
-
+import { useSelector } from "react-redux";
+import { selectCurrentUser } from "../../store/user/user.selector";
 import './home.component.scss';
 
 const Home = () => {
-    const {currentUser} = useContext(UserContext);
+    const currentUser = useSelector(selectCurrentUser);
     const navigate = useNavigate();
     const signOut = async() => {
         await signOutUser();

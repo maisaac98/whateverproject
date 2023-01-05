@@ -2,21 +2,30 @@ import './landing-page.component.scss';
 import { LoginContext } from '../../contexts/login.context';
 import { useContext } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import ButtonOne from '../button-one/button-one.component';
 import LoginPopup from '../login-popup/login-popup.component';
-import LandingPageNavBar from '../nav-bar/nav-bar.component';
-import { useEffect } from 'react';
-import { UserContext } from '../../contexts/user.context';
+import LandingPageNavBar from '../landing-page-nav/landing-page-nav';
 
+import { useEffect } from 'react';
 import { signOutUser } from '../../utils/firebase.utils';
+import { useSelector } from 'react-redux';
+
+import { selectCurrentUser } from '../../store/user/user.selector';
+import { selectPopupOpen } from '../../store/loginpopup/loginpopup.selector';
+import { LOGINPOPUP_ACTION_TYPES } from '../../store/loginpopup/loginpopup.types';
+import { createAction } from '../../utils/reducer/reducers.utils';
+import { USER_ACTION_TYPES } from '../../store/user/user.types';
 
 const LandingPage = () => {
-    const {isPopupOpen, setIsPopupOpen, setIsSignUpOpen} = useContext(LoginContext);
-    const { currentUser } = useContext(UserContext);
+    const currentUser = useSelector(selectCurrentUser);
+    const popupState = useSelector(selectPopupOpen);
+    const dispatch = useDispatch();
+
     const togglePopup = () => {
-        setIsSignUpOpen(true);
-        setIsPopupOpen(!isPopupOpen);
+        dispatch(createAction(LOGINPOPUP_ACTION_TYPES.SET_SIGNUP_OPEN));
+        dispatch(createAction(LOGINPOPUP_ACTION_TYPES.SET_POPUP_OPEN));
     }
     const navigate = useNavigate();
 
@@ -39,9 +48,8 @@ const LandingPage = () => {
                      <div className="button-one" onClick={togglePopup}>
                          <ButtonOne/>
                      </div>
-                     {/* <button onClick={signOutUser}>sign out</button> testing function*/}
                  </div>
-                 {isPopupOpen&&<LoginPopup/>}
+                 {popupState&&<LoginPopup/>}
              </div> 
          )
 }
